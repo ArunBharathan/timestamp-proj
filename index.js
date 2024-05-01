@@ -25,6 +25,10 @@ app.get("/api/hello", function (req, res) {
 
 app.get("/api/:date?", (req, resp) => {
   let date = req?.params?.date;
+  console.log(date, "Type of date on recive =>", typeof date);
+  if (!date) {
+    resp.json({ unix: new Date().getTime(), utc: new Date().toUTCString() });
+  }
   let unix = null,
     utc = null;
   // console.log(date, "Type of date =>", typeof date);
